@@ -36,3 +36,59 @@ img{max-width:100%;display:block}a{text-decoration:none;color:inherit}button,inp
 @media(max-width:1000px){.nav-links{gap:16px}.nav-links a{font-size:12px}.hero-grid{gap:30px}.footer-grid{grid-template-columns:1fr 1fr}.grid-3{grid-template-columns:repeat(2,minmax(0,1fr))}}
 @media(max-width:800px){.topbar-inner{justify-content:center}.topbar-social{display:none}.nav-wrap{min-height:72px}.menu-toggle{display:block}.nav-links{display:none;position:absolute;top:100%;left:0;right:0;background:#fff;padding:12px 4% 20px;box-shadow:0 15px 22px #08243a18;flex-direction:column;align-items:stretch;gap:0}.nav-links.open{display:flex}.nav-links a{padding:13px 5px;border-bottom:1px solid var(--line);font-size:14px}.nav-links .btn{margin-top:12px}.hero-grid{grid-template-columns:1fr;padding-block:65px}.hero{min-height:auto}.hero-panel{max-width:520px}.split,.contact-layout{grid-template-columns:1fr}.split{gap:30px}.split-image,.split-image img{min-height:300px}.section{padding:65px 0}.cta-band{align-items:flex-start;flex-direction:column}}
 @media(max-width:560px){.topbar{font-size:11px}.topbar-inner{min-height:36px}.topbar-track{gap:18px}.brand{min-width:0}.brand-mark{width:43px;height:43px}.brand-name{font-size:17px}.brand-name small{font-size:9px}.hero h1{font-size:42px;letter-spacing:-1.4px}.hero p{font-size:14px}.hero-actions .btn{width:100%}.hero-panel{padding:24px}.section-head{margin-bottom:30px}.grid-3,.grid-2,.feature-list{grid-template-columns:1fr}.card-img{height:205px}.form-grid{grid-template-columns:1fr}.form-group.full{grid-column:auto}.form-card,.contact-panel{padding:23px}.footer-grid{grid-template-columns:1fr;gap:24px}.footer-bottom{align-items:flex-start;flex-direction:column}.cta-band{padding:28px 23px}.back-top{right:14px;bottom:15px}}
+/* Center footer copyright and designed-by text */
+.footer-bottom {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    gap: 8px;
+    width: 100%;
+}
+
+.footer-bottom p,
+.footer-bottom span {
+    text-align: center;
+    margin: 0;
+}
+
+/* Center footer copyright and designed-by text */
+.footer-bottom {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    width: 100%;
+    gap: 8px;
+    padding: 15px 12px;
+    box-sizing: border-box;
+}
+
+.footer-bottom p,
+.footer-bottom span {
+    text-align: center;
+    margin: 0;
+    width: 100%;
+}
+
+/* Mobile view */
+@media (max-width: 768px) {
+    .footer-bottom {
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        text-align: center;
+        padding: 14px 10px;
+        gap: 8px;
+    }
+
+    .footer-bottom p,
+    .footer-bottom span {
+        text-align: center;
+        width: 100%;
+        line-height: 1.6;
+        overflow-wrap: anywhere;
+    }
+}
