@@ -7,12 +7,60 @@ document.addEventListener("DOMContentLoaded", () => {
       toggle.setAttribute("aria-expanded", String(isOpen));
       toggle.textContent = isOpen ? "×" : "☰";
     });
-    nav.querySelectorAll("a").forEach(link => link.addEventListener("click", () => {
+    // Close mobile nav when clicking a leaf link (excluding the dropdown toggle)
+    nav.querySelectorAll("a:not(.nav-dropdown-toggle)").forEach(link => link.addEventListener("click", () => {
       nav.classList.remove("open");
       toggle.setAttribute("aria-expanded", "false");
       toggle.textContent = "☰";
     }));
   }
+
+  // Handle dropdown toggling on mobile / touch
+  const dropdowns = document.querySelectorAll(".nav-dropdown");
+  dropdowns.forEach(dropdown => {
+    const dropdownToggle = dropdown.querySelector(".nav-dropdown-toggle");
+    if (dropdownToggle) {
+      dropdownToggle.addEventListener("click", (e) => {
+        // On mobile viewports, toggle the accordion dropdown instead of direct navigation
+        if (window.innerWidth <= 920) {
+          e.preventDefault();
+          const wasOpen = dropdown.classList.contains("dropdown-open");
+          // Close other dropdowns
+          dropdowns.forEach(d => {
+            d.classList.remove("dropdown-open");
+            const btn = d.querySelector(".nav-dropdown-toggle");
+            if (btn) btn.setAttribute("aria-expanded", "false");
+          });
+          if (!wasOpen) {
+            dropdown.classList.add("dropdown-open");
+            dropdownToggle.setAttribute("aria-expanded", "true");
+          }
+        }
+      });
+    }
+  });
+
+  // Close open dropdowns if user clicks outside
+  document.addEventListener("click", (e) => {
+    if (!e.target.closest(".nav-dropdown")) {
+      dropdowns.forEach(d => {
+        d.classList.remove("dropdown-open");
+        const btn = d.querySelector(".nav-dropdown-toggle");
+        if (btn) btn.setAttribute("aria-expanded", "false");
+      });
+    }
+  });
+
+  // Close dropdown on Escape key
+  document.addEventListener("keydown", (e) => {
+    if (e.key === "Escape") {
+      dropdowns.forEach(d => {
+        d.classList.remove("dropdown-open");
+        const btn = d.querySelector(".nav-dropdown-toggle");
+        if (btn) btn.setAttribute("aria-expanded", "false");
+      });
+    }
+  });
 
   const backTop = document.querySelector(".back-top");
   if (backTop) {
